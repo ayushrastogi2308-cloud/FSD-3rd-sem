@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket Details</title>
+    <style>
+        div#maincontent {
+            height: 150px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: left;
+            color: #08438E;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        div#heading {
+            text-decoration: bold;
+            text-align: center;
+            margin-top: 80px;
+            width: 500px;
+            border: 1px solid #CEE2FA;
+            text-align: center;
+            color: #08438E;
+            background-color: #CEE2FA;
+            font-family: calibri;
+            font-size: 20;
+            padding: 5px;
+        }
+        h4 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="heading">
+            <b>Theatre Drama</b>
+        </div>
+        <div id="maincontent">
+            <h4>Your Ticket Details:</h4>
+            <br>
+            <script>
+                var ticket=3;
+                var ticketprice=9;
+                var price=ticket*ticketprice;
+                var discount=price*0.10;
+                var totalprice=price-discount;
+                document.write("Total number of seats booked:"," ",ticket,"<br>");
+                document.write("Total cost of 3 tickets:"," ",price,"<br>");
+                document.write("Festive season discount:"," ","10%","<br>");
+                document.write("Total cost after discount:"," ",totalprice,"<br>");
+
+
+                //Write the code to calculate the total price and discounted price for the tickets
+            </script>
+        </div>
+    </center>
+</body>
+</html>
