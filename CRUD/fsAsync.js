@@ -25,7 +25,8 @@ fs.appendFile('sample.txt','\nSemester : 3',(err)=>{
         console.log('\n. File updated successfully!');
     }
 })
-//updated read
+//updated read after the updation
+
 // fs.writeFile(
 //     'sample3.txt','Welcome to Full Stack Development',(err)=>{
 //         if(err){
