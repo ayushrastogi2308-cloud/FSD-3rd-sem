@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Starter</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="quiz.js" defer></script>
+  </head>
+  <body class="front-page">
+    <div class="container">
+      <h1 id="QUIZHEAD">QUIZ</h1>
+
+      <form id="quizForm" class="formpage">
+        <label for="studentName">Name :</label>
+        <input id="studentName" type="text" placeholder="Enter your name" required />
+
+        <label for="studentRoll">Roll No. :</label>
+        <input id="studentRoll" type="number" placeholder="Enter your roll no." required />
+
+        <label for="studentSection">Section :</label>
+        <select id="studentSection" required>
+          <option value="">Select section</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+        </select>
+
+        <button type="button" id="start" onclick="startQuiz()">Start Quiz</button>
+      </form>
+    </div>
+  </body>
+</html>

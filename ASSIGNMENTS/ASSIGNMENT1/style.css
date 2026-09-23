@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f4f7ff, #e3ecff);
+  color: #1d1d1d;
+}
+
+.front-page,
+.quiz-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container,
+.quiz-wrapper {
+  width: min(90%, 700px);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 30px;
+}
+
+#QUIZHEAD {
+  text-align: center;
+  margin: 0 0 25px;
+  padding: 14px;
+  border: 3px solid #0d2b45;
+  background: #dbeafe;
+  color: #0d2b45;
+  border-radius: 12px;
+  letter-spacing: 1px;
+}
+
+.formpage {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-weight: bold;
+  color: #233b53;
+}
+
+select,
+input,
+button {
+  font: inherit;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #90a4b7;
+  border-radius: 10px;
+  background: #f9fbff;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+#start,
+.nav-btn.primary {
+  background: #2d6cdf;
+  color: white;
+}
+
+#start:hover,
+.nav-btn.primary:hover {
+  background: #1d4eb0;
+}
+
+.quiz-wrapper h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.student-info {
+  font-weight: bold;
+  color: #264a75;
+  margin-bottom: 20px;
+}
+
+.question-box {
+  background: #f5f9ff;
+  border: 1px solid #d7e7ff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.question-box h2 {
+  margin-top: 0;
+  color: #1f3b5b;
+}
+
+.options {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #dfeaf8;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.quiz-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: #dfeaf8;
+  color: #1a2d41;
+}
+
+.nav-btn.success {
+  background: #2bb673;
+  color: white;
+}
+
+.result-box {
+  margin-top: 20px;
+  background: #eefaf5;
+  border: 1px solid #b9e7cd;
+  color: #1b5d3d;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+@media (max-width: 600px) {
+  .container,
+  .quiz-wrapper {
+    padding: 20px 16px;
+  }
+
+  .quiz-controls {
+    flex-direction: column;
+  }
+
+  .nav-btn,
+  #start {
+    width: 100%;
+  }
+}

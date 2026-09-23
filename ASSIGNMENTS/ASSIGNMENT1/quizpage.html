@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="quiz.js" defer></script>
+  </head>
+  <body class="quiz-page" onload="showQuiz()">
+    <div class="quiz-wrapper">
+      <h1>Quiz Challenge</h1>
+      <p id="studentInfo" class="student-info"></p>
+
+      <div id="quizContainer"></div>
+
+      <div id="quizControls" class="quiz-controls">
+        <button type="button" id="prevButton" class="nav-btn" onclick="prevQuestion()">Previous</button>
+        <button type="button" id="nextButton" class="nav-btn primary" onclick="nextQuestion()">Next Question</button>
+        <button type="button" id="submitButton" class="nav-btn success" onclick="submitQuiz()">Submit Quiz</button>
+      </div>
+
+      <div id="resultBox" class="result-box"></div>
+    </div>
+  </body>
+</html>
