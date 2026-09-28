@@ -14,19 +14,15 @@
       <form id="quizForm" class="formpage">
         <label for="studentName">Name :</label>
         <input id="studentName" type="text" placeholder="Enter your name" required />
+        <label for="studentroll">ROll number</label>
+        <input id="studentroll" type="number" placeholder="Enter your roll number" required/>
+        <select for="Section" required>SECTION</select>
+        <option value="A">CSE DS A</option>
+        <option value="B">CSE DS B</option>
+        <option value="C">CSE DS C</option>
 
-        <label for="studentRoll">Roll No. :</label>
-        <input id="studentRoll" type="number" placeholder="Enter your roll no." required />
 
-        <label for="studentSection">Section :</label>
-        <select id="studentSection" required>
-          <option value="">Select section</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-        </select>
-
-        <button type="button" id="start" onclick="startQuiz()">Start Quiz</button>
+        <button type="button" id="start" onclick="startQuiz()" onmouseover="highlightButton(this)">Start Quiz</button>
       </form>
     </div>
   </body>

@@ -14,13 +14,7 @@
 
       <div id="quizContainer"></div>
 
-      <div id="quizControls" class="quiz-controls">
-        <button type="button" id="prevButton" class="nav-btn" onclick="prevQuestion()">Previous</button>
-        <button type="button" id="nextButton" class="nav-btn primary" onclick="nextQuestion()">Next Question</button>
-        <button type="button" id="submitButton" class="nav-btn success" onclick="submitQuiz()">Submit Quiz</button>
-      </div>
-
-      <div id="resultBox" class="result-box"></div>
+      <button id="nextButton" class="nav-btn primary" onclick="nextQuestion()" onmouseover="highlightButton(this)" style="display: none;">Next Question</button>
     </div>
   </body>
 </html>

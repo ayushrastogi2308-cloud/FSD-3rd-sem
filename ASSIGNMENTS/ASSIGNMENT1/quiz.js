@@ -1,130 +1,88 @@
 const questions = [
   {
     question: 'What does HTML stand for?',
-    options: ['Hyper Text Markup Language', 'Home Tool Markup Language', 'Hyperlinks and Text Markup Language', 'High Text Machine Language'],
+    options: ['Hyper Text Markup Language', 'Home Tool Markup Language', 'High Text Machine Language'],
     answer: 'Hyper Text Markup Language'
   },
   {
-    question: 'Which keyword is used to create a variable in JavaScript?',
-    options: ['var', 'let', 'const', 'all of these'],
-    answer: 'all of these'
-  },
-  {
     question: 'What is CSS used for?',
-    options: ['To style web pages', 'To create database', 'To store data', 'To write server code'],
+    options: ['To style web pages', 'To store data', 'To write server code'],
     answer: 'To style web pages'
   },
   {
-    question: 'Which tag is used to add JavaScript in HTML?',
-    options: ['<script>', '<link>', '<style>', '<js>'],
+    question: 'Which tag adds JavaScript to a web page?',
+    options: ['<script>', '<style>', '<link>'],
     answer: '<script>'
-  },
-  {
-    question: 'Which operator is used for checking equality and data type?',
-    options: ['==', '===', '!=', '>='],
-    answer: '===' 
   }
 ];
 
-let currentQuestion = 0;
-let answers = [];
+let questionNumber = 0;
+let score = 0;
 
 function startQuiz() {
   const name = document.getElementById('studentName').value.trim();
-  const roll = document.getElementById('studentRoll').value.trim();
-  const section = document.getElementById('studentSection').value;
 
-  if (name === '' || roll === '' || section === '') {
-    alert('Please enter all details');
+  if (name === '') {
+    alert('Please enter your name');
     return;
   }
 
   sessionStorage.setItem('studentName', name);
-  sessionStorage.setItem('studentRoll', roll);
-  sessionStorage.setItem('studentSection', section);
-
   window.location.href = 'quizpage.html';
 }
 
-function showQuiz() {
-  const name = sessionStorage.getItem('studentName') || 'Student';
-  const info = document.getElementById('studentInfo');
-
-  if (info) {
-    info.textContent = 'Name: ' + name;
-  }
-
-  displayQuestion();
+function highlightButton(button) {
+  button.style.backgroundColor = '#b9d6ff';
 }
 
-function displayQuestion() {
-  const question = questions[currentQuestion];
-  const quizContainer = document.getElementById('quizContainer');
+function showQuiz() {
+  document.getElementById('studentInfo').textContent =
+    'Student: ' + (sessionStorage.getItem('studentName') || 'Student');
+  showQuestion();
+}
 
-  if (!quizContainer) {
-    return;
-  }
-
-  let options = '';
+function showQuestion() {
+  const question = questions[questionNumber];
+  let questionHtml = '<div class="question-box"><h2>Question ' + (questionNumber + 1) + '</h2>';
+  questionHtml += '<p>' + question.question + '</p><div class="options">';
 
   for (let i = 0; i < question.options.length; i++) {
-    const option = question.options[i];
-    const checked = answers[currentQuestion] === option ? 'checked' : '';
-    options += '<label><input type="radio" name="answer" value="' + option + '" ' + checked + '> ' + option + '</label><br>';
+    questionHtml += '<button class="option" onclick="checkAnswer(this, ' + i + ')" onmouseover="highlightButton(this)">' + question.options[i] + '</button>';
   }
 
-  quizContainer.innerHTML = '<h2>Question ' + (currentQuestion + 1) + '</h2><p>' + question.question + '</p>' + options;
+  questionHtml += '</div><p id="feedback"></p></div>';
+  document.getElementById('quizContainer').innerHTML = questionHtml;
+  document.getElementById('nextButton').style.display = 'none';
 }
 
-function getSelectedAnswer() {
-  const selected = document.querySelector('input[name="answer"]:checked');
+function checkAnswer(button, optionNumber) {
+  const question = questions[questionNumber];
+  const buttons = document.querySelectorAll('.option');
 
-  if (selected) {
-    return selected.value;
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = true;
   }
 
-  return null;
+  if (question.options[optionNumber] === question.answer) {
+    score++;
+    document.getElementById('feedback').textContent = 'Correct!';
+  } else {
+    document.getElementById('feedback').textContent = 'Try again on the next question!';
+  }
+
+  button.style.backgroundColor = '#b9d6ff';
+  document.getElementById('nextButton').style.display = 'inline-block';
 }
 
 function nextQuestion() {
-  answers[currentQuestion] = getSelectedAnswer();
+  questionNumber++;
 
-  if (currentQuestion < questions.length - 1) {
-    currentQuestion = currentQuestion + 1;
-    displayQuestion();
+  if (questionNumber < questions.length) {
+    showQuestion();
   } else {
-    submitQuiz();
+    document.getElementById('quizContainer').innerHTML =
+      '<h2>Quiz complete!</h2><p>Your score: ' + score + ' / ' + questions.length + '</p>';
+    document.getElementById('nextButton').style.display = 'none';
   }
 }
 
-function prevQuestion() {
-  answers[currentQuestion] = getSelectedAnswer();
-
-  if (currentQuestion > 0) {
-    currentQuestion = currentQuestion - 1;
-    displayQuestion();
-  }
-}
-
-function submitQuiz() {
-  answers[currentQuestion] = getSelectedAnswer();
-
-  const name = sessionStorage.getItem('studentName') || 'Student';
-  let score = 0;
-
-  for (let i = 0; i < questions.length; i++) {
-    if (answers[i] === questions[i].answer) {
-      score = score + 1;
-    }
-  }
-
-  const resultBox = document.getElementById('resultBox');
-  if (resultBox) {
-    resultBox.innerHTML = '<h3>Quiz Finished</h3><p>' + name + ', your score is ' + score + '/' + questions.length + '</p>';
-  }
-
-  const controls = document.getElementById('quizControls');
-  if (controls) {
-    controls.style.display = 'none';
-  }
-}

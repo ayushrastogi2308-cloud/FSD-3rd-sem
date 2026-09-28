@@ -109,18 +109,46 @@ button {
 
 .options {
   display: grid;
-  gap: 12px;
-  margin-top: 18px;
+  gap: 8px;
+  margin-top: 16px;
 }
 
 .option {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: #fff;
-  border: 1px solid #dfeaf8;
-  padding: 10px 12px;
-  border-radius: 10px;
+  gap: 12px;
+  min-height: 48px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid #d7e2ef;
+  border-radius: 8px;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.option:hover {
+  background: #f0f6ff;
+  border-color: #8eb5e8;
+}
+
+.option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin: 0;
+  padding: 0;
+  accent-color: #2d6cdf;
+}
+
+.option span {
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.option:has(input:checked) {
+  background: #e8f1ff;
+  border-color: #2d6cdf;
 }
 
 .quiz-controls {
